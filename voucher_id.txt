@@ -1,0 +1,19 @@
+$get_id = mysqli_query($conn, "SELECT * FROM vouchers ORDER BY id DESC  LIMIT 1 ");
+$result_id = mysqli_fetch_assoc($get_id);
+$get_v_id = $result_id['id'];
+$result_v_id = $result_id['voucher_no'];
+
+$to_year = date('Y');
+$to_month = date('m');
+
+if($get_v_id==""){
+  $v_id = "V".date('Y').date('m')."1";
+}elseif (stristr($result_v_id, $to_month)===FALSE) {
+  $v_id = "V".date('Y').date('m').'1';
+}elseif (stristr($result_v_id, $to_year)===FALSE) {
+  $v_id = "V".date('Y').date('m').'1';
+}else{
+  $remove_m = substr($result_v_id, 7);
+  $remove_m = $remove_m + 1;
+  $v_id = "V".date('Y').date('m').$remove_m;
+}

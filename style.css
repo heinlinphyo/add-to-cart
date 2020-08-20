@@ -1,0 +1,12 @@
+
+.container{
+  margin: 50px auto;
+}
+
+ul{
+  list-style: none;
+}
+li{
+  display: inline-block;
+  padding: 5px;
+}
